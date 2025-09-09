@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change background</title>
+    <link rel="stylesheet" href="backgroound.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button class="button">Click me! RN</button>
+
+    <script>
+        function random_color(){
+            var hex, color;
+            hex = '0123456789ABCDEF';
+            color = '#';
+            for(let i = 0; i < 6; i++) color += hex[Math.floor(Math.random() * 16)];
+            return color ;
+        }
+
+        function change_color(){
+            $("body").css("background-color", random_color());
+        }
+
+        $(document).ready(function(){
+            $(".button").on("click", change_color);
+        });
+    </script>
+</body>
+</html>

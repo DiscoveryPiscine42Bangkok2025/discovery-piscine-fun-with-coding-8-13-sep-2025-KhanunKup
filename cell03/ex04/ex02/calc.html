@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div>
+        <input id="Num_1"/>
+        <form>
+            <select id="operator">
+                <option value="Choose">Choose</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+        </form>
+        <input id="Num_2"/>
+        <input type="submit" value="Try me!" onclick="calculate()"/>
+    </div>
+    <script>
+        function calculate (){
+            // ใช้ jQuery ในการอ่านค่า
+            let number1 = $("#Num_1").val().trim();
+            let number2 = $("#Num_2").val().trim();
+            let operator = $("#operator").val();
+
+            if (operator == "Choose") {
+                alert("Please select and operator");
+            } else if (OnlyNumbers(number1) && OnlyNumbers(number2)){
+                if (parseInt(number1) < 0 || parseInt(number2) < 0) {
+                    alert("Error :(");
+                } else if ((operator == "%" || operator == "/") && number2 == "0") {
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                } else {
+                    // รันผลลัพธ์เหมือนเดิม
+                    let result = eval(number1 + operator + number2);
+                    alert(result);
+                    console.log(result);
+                }         
+            } else {
+                alert("Error :(");
+            }
+        }
+
+        function OnlyNumbers(str) {
+            return /^[0-9]+$/.test(str);
+        }
+
+        function greeting(){
+            alert("Please, use me...");
+        }
+
+        setTimeout(greeting, 30000);
+    </script>
+</body>
+</html>
